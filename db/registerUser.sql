@@ -1,3 +1,3 @@
 insert into users(first_name, last_name, email, username, password)values(
-  ${firstname}, ${lastname},${email},${username},${hash}
-);
+  ${registerFirstName}, ${registerLastName},${registerEmail},${registerUsername},${hash}
+) returning username, password, user_id;
