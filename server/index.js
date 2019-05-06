@@ -25,3 +25,8 @@ massive(CONNECTION_STRING).then((database)=>{
   console.log(database.listTables())
   app.listen(SERVER_PORT, ()=>{console.log(`listening on ${SERVER_PORT}`)})
 })
+
+app.get('/api/users',controller.getUsers)
+app.post('/auth/register', controller.register)
+app.post('/auth/login', controller.login)
+app.get('/auth/logout', controller.logout)
