@@ -50,7 +50,7 @@ switch(type){
   const  { firstName,lastName, email, password, username} = payload
   return {...state, firstName, lastName, email, password,username}
   case LOGOUT:
-  return {initialState}
+  return {...state, user_id: '', username: '', firstName: '', lastName: '', email: '', bloodSugarReadings: []}
   default: return state
 }
 
