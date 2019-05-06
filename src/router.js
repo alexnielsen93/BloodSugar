@@ -4,7 +4,8 @@ import LandingPage from './components/landingPage'
 import Login from './components/forms/login'
 import LoginForm from './components/forms/loginForm'
 import RegisterForm from './components/forms/registerForm'
-
+import Home from './components/home'
+import AddBloodSugarForm from './components/forms/addBloodSugarForm.js'
 export default(
 
   <Switch>
@@ -16,6 +17,8 @@ export default(
 
     )}/>
     <Route path = '/register' component = {RegisterForm}/>
+    <Route path = '/home' component = {Home}/>
+    <Route path = '/add_data' component = {AddBloodSugarForm}/>
 
   </Switch>
 )

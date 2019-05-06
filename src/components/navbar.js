@@ -8,9 +8,7 @@ const Navbar = (props) =>{
     <nav>
       <span>Diabeetus</span>
         <ul>
-          <li>
-            <Link to = '/'>Home</Link>            
-          </li>
+
           <li>
             <Link to ='/login'>Login</Link>
           </li>
