@@ -40,9 +40,10 @@ const initialState ={
    }
  }
 
- export function updateBloodSugar(){
+ export function updateBloodSugar(bloodSugarReadings){
   return{
-    type: UPDATE_BLOOD_SUGAR
+    type: UPDATE_BLOOD_SUGAR,
+    payload: bloodSugarReadings
   }
  }
 
@@ -59,6 +60,7 @@ switch(type){
   case LOGOUT:
   return {...state, user_id: '', username: '', firstName: '', lastName: '', email: '', bloodSugarReadings: []}
   case UPDATE_BLOOD_SUGAR:
+  console.log('REDUCER',payload)
   return {...state, bloodSugarReadings:payload}
   default: return state
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-// import BloodSugarReading from './bloodSugarReading'
+import BloodSugarReading from './bloodSugarReading'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
@@ -18,15 +18,23 @@ class DataTable extends Component{
   }
 
   componentDidMount(){
+    console.log(this.state)
     axios.get('/api/bloodsugar').then((res)=>{
       let bloodSugarReadings = res.data
       console.log(bloodSugarReadings)
       this.props.updateBloodSugar(bloodSugarReadings)
+      this.setState({bloodSugarReadings})
+      console.log(this.state)
     })   
   }
 render(){
   return(
-    <div>Data Table</div>
+    <div><h2>Data Table</h2>
+    {this.state.bloodSugarReadings.map((reading)=>{
+      return <BloodSugarReading reading = {reading}/>
+    })}
+    
+    </div>
   )
 }
 }
