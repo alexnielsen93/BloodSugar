@@ -6,6 +6,7 @@ import LoginForm from './components/forms/loginForm'
 import RegisterForm from './components/forms/registerForm'
 import Home from './components/home'
 import AddBloodSugarForm from './components/forms/addBloodSugarForm.js'
+import DataTable from './components/datatable'
 export default(
 
   <Switch>
@@ -19,6 +20,7 @@ export default(
     <Route path = '/register' component = {RegisterForm}/>
     <Route path = '/home' component = {Home}/>
     <Route path = '/add_data' component = {AddBloodSugarForm}/>
+    <Route path = '/data' component = {DataTable}/>
 
   </Switch>
 )

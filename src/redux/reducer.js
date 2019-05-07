@@ -58,6 +58,8 @@ switch(type){
   return {...state, firstName, lastName, email, password,username}
   case LOGOUT:
   return {...state, user_id: '', username: '', firstName: '', lastName: '', email: '', bloodSugarReadings: []}
+  case UPDATE_BLOOD_SUGAR:
+  return {...state, bloodSugarReadings:payload}
   default: return state
 }
 

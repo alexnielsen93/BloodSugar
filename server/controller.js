@@ -65,8 +65,9 @@ module.exports={
     
 
     db.getBloodSugar({user_id}).then((data)=>{
+      console.log(data[0].reading_date)
       res.status(200).send(data)
-      console.log(data)
+      
     }).catch((err)=>{console.log(`error ${err}`)})
   },
   addBloodSugar: async(req, res)=>{
