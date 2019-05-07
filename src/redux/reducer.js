@@ -12,6 +12,7 @@ const initialState ={
  const UPDATE_USERNAME = 'UPDATE_USER_NAME'
  const UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS'
  const LOGOUT = 'LOGOUT'
+ const UPDATE_BLOOD_SUGAR = 'UPDATE_BLOOD_SUGAR'
  export function updateUserId (id){
    return{
      type: UPDATE_USER_ID,
@@ -37,6 +38,12 @@ const initialState ={
    return{
      type: LOGOUT
    }
+ }
+
+ export function updateBloodSugar(){
+  return{
+    type: UPDATE_BLOOD_SUGAR
+  }
  }
 
 export default function reducer(state = initialState, action){

@@ -11,6 +11,7 @@ module.exports={
     const db = req.app.get('db')
     const {registerEmail, registerFirstName, registerLastName, registerUsername, registerPassword} = req.body
     const { session } = req
+    //so it works with the check e-mail sql query 
     let email = registerEmail
     let emailTaken = await(db.checkEmail({email}))
     emailTaken = +emailTaken[0].count
@@ -42,7 +43,6 @@ module.exports={
       console.log(user[0])
       const authenticated = bcrypt.compareSync(req.body.loginPassword, user[0].password)
       if (authenticated){
-      
         res.status(200).send(({authenticated, user_id: user[0].user_id}))
       }
     }
@@ -53,7 +53,31 @@ module.exports={
   logout: (req,res)=>{
     req.session.destroy()
     res.sendStatus(200)
-  }
+  },
+  getBloodSugar:  (req,res)=>{
+    console.log('getting bloodsugar')
+    const db = req.app.get('db')
+    console.log(req.session.user.user_id)
+    const { session } = req
+    let { user } = session
+    let { user_id } = user
+    console.log( typeof user_id )
+    
 
+    db.getBloodSugar({user_id}).then((data)=>{
+      res.status(200).send(data)
+      console.log(data)
+    }).catch((err)=>{console.log(`error ${err}`)})
+  },
+  addBloodSugar: async(req, res)=>{
+    console.log('adding bloodsugar')
+    const db = req.app.get('db')
+    const {session} = req
+    const {user_id} = session
+    try{
+
+
+    } catch(err){res.sendStatus(400)}
+  }
 
 }
