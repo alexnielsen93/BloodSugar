@@ -15,6 +15,12 @@ const Navbar = (props) =>{
           <li>
             <Link to ='/register'>Register</Link>
           </li>
+          <li>
+          <Link to ="/home">Home</Link>
+          </li>
+          <li>
+          <Link to ="/add_data">Add Blood Sugar Reading</Link>
+          </li>
         </ul>
         {username && <div>Welcome, {username}
         <button onClick={logout}>Logout</button>

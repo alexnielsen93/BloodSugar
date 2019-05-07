@@ -4,6 +4,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {updateBloodSugar} from '../redux/reducer'
+import { Link } from 'react-router-dom'
 
 
 class DataTable extends Component{
@@ -11,6 +12,7 @@ class DataTable extends Component{
     super()
     this.state={
       bloodSugarReadings: [],
+
 
 
     }
@@ -29,10 +31,15 @@ class DataTable extends Component{
   }
 render(){
   return(
-    <div><h2>Data Table</h2>
-    {this.state.bloodSugarReadings.map((reading)=>{
-      return <BloodSugarReading reading = {reading}/>
-    })}
+    <div>
+      <div>
+      <h2>Blood Sugar Readings</h2>
+  
+    </div>{this.props.username? (
+    this.state.bloodSugarReadings.map((reading)=>{
+      return <BloodSugarReading reading = {reading} key/>
+    })):(<div>No data</div>)
+  }
     
     </div>
   )
@@ -40,8 +47,8 @@ render(){
 }
 
 const mapStateToProps = (reduxState)=>{
-  let {bloodSugarReadings} = reduxState
-  return {bloodSugarReadings}
+  let {bloodSugarReadings, username} = reduxState
+  return {bloodSugarReadings, username}
 }
 
 const mapDispatchToProps={

@@ -74,8 +74,15 @@ module.exports={
     console.log('adding bloodsugar')
     const db = req.app.get('db')
     const {session} = req
-    const {user_id} = session
+    let {user_id} = session
+    user_id = +user_id
+    let {sugar_level, reading_date, reading_time, note} = req.body
+    sugar_level = +sugar_level
     try{
+
+      db.addReading({sugar_level, reading_date,reading_time,note,user_id}).then((data)=>{
+        res.status(200).send(data)
+      })
 
 
     } catch(err){res.sendStatus(400)}
