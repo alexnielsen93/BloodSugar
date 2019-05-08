@@ -30,14 +30,20 @@ class Graph extends Component{
     return(
       <div>
         <Line data = {{labels: hours,datasets: [{data: levels, backgroundColor: []},{data: times}]}} options = {{ scales:{xAxes:[{
-          type: 'time',time:{
+          type: 'time',
+          distribution: 'series',
+          ticks:{
+            source: 'labels'
+          },
+          time:{
             unit: 'hour'
           }
         }]}}}/>
-        graph
+        
       </div>
     )
   }
+  
 
 }
 
