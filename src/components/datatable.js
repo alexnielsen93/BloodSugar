@@ -33,6 +33,7 @@ render(){
   return(
     <div>
       <div>
+        <Link to = 'graph'>Graphs</Link>
       <h2>Blood Sugar Readings</h2>
   
     </div>{this.props.username? (

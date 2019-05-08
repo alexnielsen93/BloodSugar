@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { getTime, getDate, format, formatDistance, formatRelative, subDays } from 'date-fns'
+import { format } from 'date-fns'
 import { connect } from 'react-redux'
 import axios from 'axios'
 import { updateBloodSugar } from '../../redux/reducer'
