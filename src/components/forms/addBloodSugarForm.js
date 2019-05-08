@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import { getTime, getDate, format, formatDistance, formatRelative, subDays } from 'date-fns'
 import { connect } from 'react-redux'
 import axios from 'axios'
+import { updateBloodSugar } from '../../redux/reducer'
+import { withRouter} from 'react-router-dom'
 
 
 
@@ -31,10 +33,18 @@ class BloodSugarForm extends Component{
 
     try{
       const res = await axios.post('/api/addreading', {sugar_level, reading_date, reading_time, note})
+      
+      this.props.updateBloodSugar(res)
+
     }catch(err){
       console.log(err)
     }
-
+    this.setState({
+      sugar_level : 0,
+      reading_date: format(new Date(),'MM/DD/YYYY'),
+      reading_time: format(new Date(),'h:m'),
+      note: ''
+    })
   }
 
 
@@ -68,7 +78,7 @@ class BloodSugarForm extends Component{
     onChange = {this.handleFormInputUpdate}
     type="text"/>
     
-    <button>Submit</button>
+    <button onClick={this.handleFormDataSubmit}>Submit</button>
     <button>Cancel</button>
     </form>
     </>
@@ -77,7 +87,12 @@ class BloodSugarForm extends Component{
 }
 
 const mapStateToProps = (reduxState) =>{
-  return reduxState
+  let {bloodSugarReadings} = reduxState
+  return {bloodSugarReadings}
 }
 
-export default connect(mapStateToProps)(BloodSugarForm)
+const mapDispatchToProps = {
+  updateBloodSugar
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(BloodSugarForm))

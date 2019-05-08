@@ -73,14 +73,17 @@ module.exports={
   addBloodSugar: async(req, res)=>{
     console.log('adding bloodsugar')
     const db = req.app.get('db')
-    const {session} = req
-    let {user_id} = session
+
+    let {user_id} = req.session.user
     user_id = +user_id
     let {sugar_level, reading_date, reading_time, note} = req.body
     sugar_level = +sugar_level
+    console.log(typeof sugar_level)
+    console.log(user_id)
     try{
-
+      console.log(sugar_level, reading_date,reading_time,note,user_id)
       db.addReading({sugar_level, reading_date,reading_time,note,user_id}).then((data)=>{
+        console.log('query came back')
         res.status(200).send(data)
       })
 
