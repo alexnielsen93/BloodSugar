@@ -1,10 +1,11 @@
-import React, { Component } from 'react'
 import { Line } from 'react-chartjs-2'
 import { connect } from 'react-redux';
+import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import { format } from 'date-fns'
 import axios from 'axios';
 import { encode } from 'punycode';
+
 const moment = require('moment')
 moment().format();
 class Graph extends Component {
@@ -13,12 +14,28 @@ class Graph extends Component {
 
     this.state = {
       bloodSugarReadings: [],
-      reading_date: '05/08/2019',
-      arr : []
+      reading_date: 'undef',
+      arr : [],
+      dates:[]
       
     }
   }
-  componentDidMount() {
+  componentDidMount(){
+    axios.get('/api/day').then(res=>{
+      this.setState({
+        dates: res.data
+      })
+      console.log(this.state.dates)
+    })
+
+  }
+
+  handleChange = (e)=> {
+    console.log('handle change firing', e)
+    this.setState({
+      reading_date: e.target.value
+    })
+    console.log(this.state.reading_date)
     let reading_date = encodeURIComponent(this.state.reading_date)
     console.log(reading_date)
     axios.get(`/api/bloodsugar/${reading_date}`).then(res=>{
@@ -39,6 +56,9 @@ class Graph extends Component {
 })
 
   }
+  dateCheck = ()=>{
+    console.log(this.state.dates)
+  }
 
   render() {
 
@@ -46,10 +66,21 @@ class Graph extends Component {
     moment('1000', 'HH:mm').utc().toDate(),moment('1100', 'HH:mm').utc().toDate(),moment('1200', 'HH:mm').utc().toDate(),moment('1300', 'HH:mm').utc().toDate(),moment('1400', 'HH:mm').utc().toDate(),moment('1500', 'HH:mm').utc().toDate(),moment('1600', 'HH:mm').utc().toDate(),moment('1700', 'HH:mm').utc().toDate(),moment('1800', 'HH:mm').utc().toDate(),moment('1900', 'HH:mm').utc().toDate(),moment('2000', 'HH:mm').utc().toDate(),moment('2100', 'HH:mm').utc().toDate(),moment('2200', 'HH:mm').utc().toDate(),moment('2300', 'HH:mm').utc().toDate(),moment('2400', 'HH:mm').utc().toDate(),]
     let extra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     let yaxes = [0,100,200,300,400,500]
-    console.log( hours[0], typeof hours[0])
+   
     let levels = [{x:hours[0],y:200}, {x:hours[1],y:400}, {x:hours[2],y:150}, {x: moment('0334', 'HH:mm').utc().toDate(), y: 200},{x:moment('2200', 'HH:mm').utc().toDate(), y: 100}]
     return (
       <div>
+        <div>
+          Dates:
+          <select  onChange = {this.handleChange}>
+          {this.state.dates.map(date=>{
+            return<option  value = {date.reading_date}>{date.reading_date}</option>
+
+          })}
+
+          </select>
+      
+        </div>
         <Line
           data={
             {
