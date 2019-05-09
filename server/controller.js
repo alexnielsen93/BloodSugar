@@ -57,19 +57,24 @@ module.exports={
   getBloodSugar:  (req,res)=>{
     console.log('getting bloodsugar')
     const db = req.app.get('db')
-    console.log(req.session.user.user_id)
-    const { session } = req
-    let { user } = session
-    let { user_id } = user
-    console.log( typeof user_id )
+    // console.log(req.session.user.user_id)
+    let { user_id } = req.session.user
+    const { reading_date }= req.params
+    console.log( req.params )
     
-
+    if(reading_date ===""){
     db.getBloodSugar({user_id}).then((data)=>{
       console.log(data[0].reading_date)
-      res.status(200).send(data)
+      return res.status(200).send(data)
       
     }).catch((err)=>{console.log(`error ${err}`)})
-  },
+  }
+    else{
+      db.getDaysReadings({user_id, reading_date}).then((data)=>{
+        console.log(data)
+        return res.status(200).send(data)
+      }).catch(err=>{console.log(`error, ${err}`)})
+    }},
   addBloodSugar: async(req, res)=>{
     console.log('adding bloodsugar')
     const db = req.app.get('db')
@@ -89,6 +94,7 @@ module.exports={
 
 
     } catch(err){res.sendStatus(400)}
-  }
+  },
+
 
 }

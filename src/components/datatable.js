@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {updateBloodSugar} from '../redux/reducer'
 import { Link } from 'react-router-dom'
+import { encode } from 'punycode';
 
 
 class DataTable extends Component{
@@ -12,6 +13,7 @@ class DataTable extends Component{
     super()
     this.state={
       bloodSugarReadings: [],
+      reading_date: '05/08/2019'
 
 
 
@@ -21,7 +23,7 @@ class DataTable extends Component{
 
   componentDidMount(){
     console.log(this.state)
-    axios.get('/api/bloodsugar').then((res)=>{
+    axios.get(`/api/bloodsugar/${encodeURI(this.state.reading_date)}`).then((res)=>{
       let bloodSugarReadings = res.data
       console.log(bloodSugarReadings)
       this.props.updateBloodSugar(bloodSugarReadings)

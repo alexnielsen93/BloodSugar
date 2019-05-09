@@ -3,6 +3,8 @@ import { Line } from 'react-chartjs-2'
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom'
 import { format } from 'date-fns'
+import axios from 'axios';
+import { encode } from 'punycode';
 const moment = require('moment')
 moment().format();
 class Graph extends Component {
@@ -10,23 +12,38 @@ class Graph extends Component {
     super()
 
     this.state = {
-      bloodSugarReadings: []
+      bloodSugarReadings: [],
+      reading_date: '05/08/2019',
+      arr : []
+      
     }
   }
   componentDidMount() {
-    let { bloodSugarReadings } = this.props
-    console.log( bloodSugarReadings)
+    let reading_date = encodeURIComponent(this.state.reading_date)
+    console.log(reading_date)
+    axios.get(`/api/bloodsugar/${reading_date}`).then(res=>{
+      this.setState({
+        bloodSugarReadings: res.data
+      })
+    })
+    
+  }
 
+  createTimeObjects = ()=>{
+    
     this.setState({
-      bloodSugarReadings: bloodSugarReadings
-    }
-    )
+  arr: this.state.bloodSugarReadings.map(reading=>{
+    let obj = {x:moment(`${reading.reading_time}`, 'HH:mm').utc().toDate() , y: reading.sugar_level}
+    return obj
+  })
+})
 
   }
 
   render() {
+
     let hours = [moment('0000', 'HH:mm').utc().toDate(),moment('0100', 'HH:mm').utc().toDate(),moment('0200', 'HH:mm').utc().toDate(),moment('0300', 'HH:mm').utc().toDate(),moment('0400', 'HH:mm').utc().toDate(),moment('0500', 'HH:mm').utc().toDate(),moment('0600', 'HH:mm').utc().toDate(),moment('0700', 'HH:mm').utc().toDate(), moment('0800', 'HH:mm').utc().toDate(), moment('0900', 'HH:mm').utc().toDate(),
-    moment('1000', 'HH:mm').utc().toDate(),moment('1100', 'HH:mm').utc().toDate(),moment('1200', 'HH:mm').utc().toDate(),moment('1300', 'HH:mm').utc().toDate(),moment('1400', 'HH:mm').utc().toDate(),moment('1500', 'HH:mm').utc().toDate(),moment('1600', 'HH:mm').utc().toDate(),moment('1700', 'HH:mm').utc().toDate(),moment('1800', 'HH:mm').utc().toDate(),moment('1900', 'HH:mm').utc().toDate(),moment('2000', 'HH:mm').utc().toDate(),moment('2100', 'HH:mm').utc().toDate(),moment('2200', 'HH:mm').utc().toDate(),moment('2300', 'HH:mm').utc().toDate(),]
+    moment('1000', 'HH:mm').utc().toDate(),moment('1100', 'HH:mm').utc().toDate(),moment('1200', 'HH:mm').utc().toDate(),moment('1300', 'HH:mm').utc().toDate(),moment('1400', 'HH:mm').utc().toDate(),moment('1500', 'HH:mm').utc().toDate(),moment('1600', 'HH:mm').utc().toDate(),moment('1700', 'HH:mm').utc().toDate(),moment('1800', 'HH:mm').utc().toDate(),moment('1900', 'HH:mm').utc().toDate(),moment('2000', 'HH:mm').utc().toDate(),moment('2100', 'HH:mm').utc().toDate(),moment('2200', 'HH:mm').utc().toDate(),moment('2300', 'HH:mm').utc().toDate(),moment('2400', 'HH:mm').utc().toDate(),]
     let extra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24]
     let yaxes = [0,100,200,300,400,500]
     console.log( hours[0], typeof hours[0])
@@ -37,7 +54,7 @@ class Graph extends Component {
           data={
             {
               labels: hours,
-              datasets: [{ label: 'Bloodsugar Levels', data: levels, backgroundColor: [], fill: false, }]
+              datasets: [{ label: 'Bloodsugar Levels', data: this.state.arr, backgroundColor: [], fill: false, }]
             }}
           options={{
             scales:
@@ -81,6 +98,7 @@ class Graph extends Component {
             }
           }} />
         graph
+        <button onClick = {()=>{this.createTimeObjects()}}>button</button>
       </div>
     )
   }
