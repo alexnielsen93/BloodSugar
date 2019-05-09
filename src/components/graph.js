@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom'
 import { format } from 'date-fns'
 import axios from 'axios';
 import { encode } from 'punycode';
+import { async } from 'q';
 
 const moment = require('moment')
 moment().format();
@@ -14,7 +15,7 @@ class Graph extends Component {
 
     this.state = {
       bloodSugarReadings: [],
-      reading_date: 'undef',
+      reading_date: '',
       arr : [],
       dates:[]
       
@@ -30,9 +31,9 @@ class Graph extends Component {
 
   }
 
-  handleChange = (e)=> {
-    console.log('handle change firing', e)
-    this.setState({
+  handleChange = async(e)=> {
+    console.log('handle change firing', e.target.value)
+    await this.setState({
       reading_date: e.target.value
     })
     console.log(this.state.reading_date)
@@ -72,9 +73,9 @@ class Graph extends Component {
       <div>
         <div>
           Dates:
-          <select  onChange = {this.handleChange}>
+          <select  value = {this.state.reading_date}onChange = {this.handleChange}>
           {this.state.dates.map(date=>{
-            return<option  value = {date.reading_date}>{date.reading_date}</option>
+            return<option  >{format(new Date(date.reading_date),'MM/DD/YYYY')}</option>
 
           })}
 
@@ -85,7 +86,7 @@ class Graph extends Component {
           data={
             {
               labels: hours,
-              datasets: [{ label: 'Bloodsugar Levels', data: this.state.arr, backgroundColor: [], fill: false, }]
+              datasets: [{ label: 'Bloodsugar Levels', data: this.state.arr, backgroundColor:'darkblue', borderColor: 'blue', fill: false, }]
             }}
           options={{
             scales:
