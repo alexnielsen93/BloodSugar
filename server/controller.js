@@ -129,8 +129,8 @@ module.exports={
     reading_id = +reading_id
     sugar_level = +sugar_level
     console.log(reading_id)
-    db.editReading({reading_id, note, sugar_level, reading_date, reading_time}).then(data=>{
-      res.status(200).send(data)
+    db.editReading({reading_id, note, sugar_level, reading_date, reading_time}).then(()=>{
+      res.sendStatus(200)
     }).catch(err=>{
       console.log(`error ${err}`)
     })

@@ -25,6 +25,7 @@ export default class BloodSugarReading extends Component{
   }
   
 render(){
+
   let {reading} = this.props
   return(
     this.state.edit ? <EditReadingForm reading = {reading} toggleEdit = {this.toggleEdit} editReading = {this.props.editReading}/> : 
