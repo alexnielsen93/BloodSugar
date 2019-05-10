@@ -13,7 +13,7 @@ class BloodSugarForm extends Component{
     this.state={
       sugar_level : 0,
       reading_date: format(new Date(),'MM/DD/YYYY'),
-      reading_time: format(new Date(),'h:m'),
+      reading_time: format(new Date(),'hh:mm'),
       note: ''
     }
   }
@@ -79,7 +79,7 @@ class BloodSugarForm extends Component{
     type="text"/>
     
     <button onClick={this.handleFormDataSubmit}>Submit</button>
-    <button>Cancel</button>
+    <button onClick={()=>{this.props.history.push('/home')}}>Cancel</button>
     </form>
     </>
     )

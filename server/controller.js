@@ -107,4 +107,34 @@ module.exports={
 
   },
 
+  deleteReading: (req, res)=>{
+    console.log('delete starting')
+    const db = req.app.get('db')
+    let {reading_id} = req.body
+    let {user_id} = req.session.user
+    user_id = +user_id
+    reading_id = +reading_id
+    console.log( reading_id)
+    db.deleteReading({reading_id, user_id}).then(data=>{
+      res.status(200).send(data)
+    }).catch(err=>{
+      console.log(`error ${err}`)
+    })
+  },
+
+  editReading: (req, res)=>{
+    console.log('edit starting ')
+    const db = req.app.get('db')
+    let {reading_id, note, sugar_level, reading_date, reading_time} = req.body
+    reading_id = +reading_id
+    sugar_level = +sugar_level
+    console.log(reading_id)
+    db.editReading({reading_id, note, sugar_level, reading_date, reading_time}).then(data=>{
+      res.status(200).send(data)
+    }).catch(err=>{
+      console.log(`error ${err}`)
+    })
+
+  }
+
 }

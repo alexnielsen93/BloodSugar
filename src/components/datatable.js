@@ -38,6 +38,16 @@ class DataTable extends Component{
     
   }
 
+  edit
+  deleteReading = (reading_id)=>{
+    console.log(reading_id)
+    axios.post('/api/delete', {reading_id}).then(res=>{
+      this.setState({
+        bloodSugarReadings : res.data
+      })
+    }).catch(err=>{console.log(`error ${err}`)}
+    )}
+
   componentDidMount(){
     axios.get('/api/day').then(res=>{
       this.setState({
@@ -64,7 +74,7 @@ render(){
   
     </div>{this.props.username? (
     this.state.bloodSugarReadings.map((reading)=>{
-      return <BloodSugarReading reading = {reading} key/>
+      return <BloodSugarReading deleteReading = {this.deleteReading}reading = {reading} key/>
     })):(<div>No data</div>)
   }
     
