@@ -26,8 +26,19 @@ handleChange=(e)=>{
   })
 }
 
+
+
 handleClick = ()=>{
   let reading = {...this.state}
+  console.log(reading.sugar_level, reading.reading_date, reading.reading_time)
+  if (!(reading.sugar_level && reading.reading_date && reading.reading_time && reading.sugar_level < 1000 && reading.sugar_level >10)){
+    alert('Invalid input, please try again. ')
+    let { sugar_level, reading_date,reading_time,note, reading_id } = this.props.reading
+  this.setState({
+    ...this.state, sugar_level,reading_date,reading_time,note,reading_id
+  })
+  return
+  }
   this.props.editReading(reading)
 
   this.props.toggleEdit()

@@ -30,7 +30,7 @@ class BloodSugarForm extends Component{
   handleDataFormSubmit= async(e)=>{
     e.preventDefault()
     const{ sugar_level, reading_date, reading_time, note } = this.state
-
+    
     try{
       const res = await axios.post('/api/addreading', {sugar_level, reading_date, reading_time, note})
       
