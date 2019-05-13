@@ -1,9 +1,20 @@
-import React from 'react'
+import React, {Component} from 'react'
 import {Link} from 'react-router-dom'
 import {connect} from 'react-redux'
 import {logout} from '../../redux/reducer'
-const Navbar = (props) =>{
-  const {username, logout} = props
+import {withRouter} from 'react-router-dom'
+class Navbar extends Component{
+  componentDidMount(){
+    console.log(this.props)
+  }
+  componentDidUpdate(prevProps, prevData){
+    if(prevProps.username !==this.props.username && this.props.username === ''){
+      this.props.history.push('/landingpage')
+    }
+    
+  }
+  render(){
+    const {username, logout} = this.props
   return(
     <nav>
       
@@ -29,12 +40,12 @@ const Navbar = (props) =>{
     </nav>
   )
 }
-
+}
 const mapStateToProps = (reduxState)=>{
   const {username} = reduxState
-  console.log(username)
+  
   return {username}
 
 }
 const mapDispatchToProps = {logout}
-export default connect(mapStateToProps, mapDispatchToProps)(Navbar)
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Navbar))

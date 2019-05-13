@@ -23,6 +23,7 @@ export default(
     <Route path = '/add_data' component = {AddBloodSugarForm}/>
     <Route path = '/data' component = {DataTable}/>
     <Route path = '/graph' component = {Graph}/>
+    <Route path = '/landingpage' component = {LandingPage}/>
 
   </Switch>
 )

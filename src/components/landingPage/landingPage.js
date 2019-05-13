@@ -1,9 +1,9 @@
 import React from 'react'
 const LandingPage =()=>(
-  <div>
+  <div className = 'landing-page'>
 
     <h1>Landing Page</h1>
-    
+    <img src="" alt=""/>
 
   </div>
 )
