@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import BloodSugarReading from './bloodSugarReading'
+import BloodSugarReading from '../bloodSugarReading/bloodSugarReading'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import {updateBloodSugar} from '../redux/reducer'
+import {updateBloodSugar} from '../../redux/reducer'
 import { Link } from 'react-router-dom'
 import { encode } from 'punycode';
 import { format } from 'date-fns'

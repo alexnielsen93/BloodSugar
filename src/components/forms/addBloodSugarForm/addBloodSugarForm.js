@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { format } from 'date-fns'
 import { connect } from 'react-redux'
 import axios from 'axios'
-import { updateBloodSugar } from '../../redux/reducer'
+import { updateBloodSugar } from '../../../redux/reducer'
 import { withRouter} from 'react-router-dom'
 
 

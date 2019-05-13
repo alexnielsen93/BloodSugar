@@ -1,13 +1,13 @@
 import React from 'react'
 import {Switch, Route} from 'react-router-dom'
-import LandingPage from './components/landingPage'
-import Login from './components/forms/login'
-import LoginForm from './components/forms/loginForm'
-import RegisterForm from './components/forms/registerForm'
-import Home from './components/home'
-import AddBloodSugarForm from './components/forms/addBloodSugarForm.js'
-import DataTable from './components/datatable'
-import Graph from './components/graph'
+import LandingPage from './components/landingPage/landingPage'
+import Login from './components/forms/login/login'
+import LoginForm from './components/forms/loginForm/loginForm'
+import RegisterForm from './components/forms/registerForm/registerForm'
+import Home from './components/home/home'
+import AddBloodSugarForm from './components/forms/addBloodSugarForm/addBloodSugarForm'
+import DataTable from './components/datatable/datatable'
+import Graph from './components/graph/graph'
 export default(
 
   <Switch>

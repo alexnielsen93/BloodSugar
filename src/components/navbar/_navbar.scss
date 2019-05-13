@@ -1,0 +1,23 @@
+.navbar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 90vw;
+}
+
+.logo{
+  width: 70%
+}
+
+.navlist{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  width: 30%;
+  
+
+
+}

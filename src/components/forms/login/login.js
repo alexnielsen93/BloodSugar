@@ -11,7 +11,8 @@ componentDidMount(){
 
 render(){
   return(
-    <div>{this.props.children}</div>
+    <div>
+    {this.props.children}</div>
 
   )
 }

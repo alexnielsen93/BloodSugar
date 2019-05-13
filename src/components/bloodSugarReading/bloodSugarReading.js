@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import EditReadingForm from './forms/editReadingForm'
+import EditReadingForm from '../forms/editReadingForm/editReadingForm'
 import { format } from 'date-fns'
 
 export default class BloodSugarReading extends Component{
