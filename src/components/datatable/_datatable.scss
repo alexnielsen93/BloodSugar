@@ -1,0 +1,13 @@
+.data-table-area{
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 3;
+  height: 100%;
+  width: 100%;
+
+}
+.list-box{
+  height: 50vh;
+  width: 100%;
+  overflow: auto;
+}

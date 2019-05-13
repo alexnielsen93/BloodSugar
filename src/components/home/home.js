@@ -35,7 +35,9 @@ render(){
     <div className = "link-boxes">
     <Link to ='/add_data'>Enter Blood Sugar</Link>
     <Link to ='/data'>Data</Link>
-    <Link to = '/graph'>Graph</Link></div>
+    <Link to = '/graph'>Graph</Link>
+    <Link to ='/display'>Display</Link>
+    </div>
   
   <div className = 'hero-box'>
   

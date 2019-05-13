@@ -39,6 +39,28 @@ class Graph extends Component {
 
   
 }
+
+//FIXTHIS
+componentDidUpdate(prevProps, prevState){
+
+console.log(`PROPS: ${this.props.reading_date} and ${prevProps.reading_date}
+STATE:  ${this.state.reading_date} and ${prevState.reading_date}`)
+if(!this.state.reading_date && this.props.reading_date){
+  this.setState({
+    
+    reading_date: this.props.reading_date
+  })
+  this.createTimeObjects()
+}
+if(this.state.reading_date !== this.props.reading_date){
+  this.setState({
+    reading_date: this.props.reading_date
+    
+  })
+  
+  this.createTimeObjects()
+}
+}
   handleChange = async (e) => {
     console.log('handle change firing', e.target.value)
     await this.setState({
@@ -81,7 +103,7 @@ class Graph extends Component {
 
     return (
       <div>
-        <div>
+        {/* <div>
           Dates:
           <select value={this.state.reading_date} onChange={this.handleChange}>
             {this.state.dates.map(date => {
@@ -91,55 +113,56 @@ class Graph extends Component {
 
           </select>
 
-        </div>
-        <Line
-          data={
-            {
-              labels: hours,
-              datasets: [{ label: 'Bloodsugar Levels', data: this.state.arr, backgroundColor: 'darkblue', borderColor: 'blue', fill: false, }]
-            }}
-          options={{
-            scales:
-            {
-              yAxes: [{
-                display: true,
-                ticks: {
-                  beginAtZero: true,
-                  steps: 5,
-                  stepSize: 100,
-                  max: 500
-                },
-
-              }],
-              xAxes: [{
-                type: 'time',
-                ticks: {
-                  beginAtZero: true,
-                  source: 'labels',
-                  min: '00:00',
-                  max: '24:00',
-                  stepSize: 1,
-                },
-                distribution: 'linear',
-
-                time: {
-
-                  unit: 'hour',
-                  stepSize: 1,
-                  min: '0:00',
-                  max: '24:00',
-                  startAtZero: true,
-                  displayFormats: {
-                    'hour': 'HH:mm'
-                  }
-                }
-
-
-
-
-              }]
-            }
-          }} />
+        </div> */}
+        <div className = 'line-graph-box'>
+          <Line
+        data={
+        {
+        labels: hours,
+        datasets: [{ label: 'Bloodsugar Levels', data: this.state.arr, backgroundColor: 'darkblue', borderColor: 'blue', fill: false, }]
+        }}
+        options={{
+        scales:
+        {
+        yAxes: [{
+        display: true,
+        ticks: {
+        beginAtZero: true,
+        steps: 5,
+        stepSize: 100,
+        max: 500
+        },
+        
+        }],
+        xAxes: [{
+        type: 'time',
+        ticks: {
+        beginAtZero: true,
+        source: 'labels',
+        min: '00:00',
+        max: '24:00',
+        stepSize: 1,
+        },
+        distribution: 'linear',
+        
+        time: {
+        
+        unit: 'hour',
+        stepSize: 1,
+        min: '0:00',
+        max: '24:00',
+        startAtZero: true,
+        displayFormats: {
+        'hour': 'HH:mm'
+        }
+        }
+        
+        
+        
+        
+        }]
+        }
+        }} /></div>
         graph
         <button onClick={() => { this.createTimeObjects() }}>button</button>
         <button onClick={()=>{console.log(this.state)}}>consolelog</button>

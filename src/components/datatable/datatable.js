@@ -71,7 +71,7 @@ class DataTable extends Component{
   }
 render(){
   return(
-    <div>
+    <div className= "data-table-area">
       <div>
         <Link to = 'graph'>Graphs</Link>
         
@@ -86,11 +86,12 @@ render(){
           </select>
       <h2>Blood Sugar Readings</h2>
   
-    </div>{this.props.username? (
+    </div>
+    <div className = "list-box">{this.props.username? (
     this.state.bloodSugarReadings.map((reading)=>{
-      return <BloodSugarReading editReading = {this.editReading}deleteReading = {this.deleteReading}reading = {reading} key/>
+    return <BloodSugarReading editReading = {this.editReading}deleteReading = {this.deleteReading}reading = {reading} key/>
     })):(<div>No data</div>)
-  }
+    }</div>
     
     </div>
   )
