@@ -3,7 +3,7 @@ import BloodSugarReading from '../bloodSugarReading/bloodSugarReading'
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
-import {updateBloodSugar} from '../../redux/reducer'
+import { updateBloodSugar, updateDay } from '../../redux/reducer'
 import { Link } from 'react-router-dom'
 import { encode } from 'punycode';
 import { format } from 'date-fns'
@@ -28,6 +28,8 @@ class DataTable extends Component{
       reading_date: e.target.value
     })
     console.log(this.state.reading_date)
+    this.props.updateDay(this.state.reading_date)
+    console.log(this.props.reading_date)
     let reading_date = encodeURIComponent(this.state.reading_date)
     console.log(reading_date)
     axios.get(`/api/bloodsugar/${reading_date}`).then(res=>{
@@ -35,6 +37,7 @@ class DataTable extends Component{
         bloodSugarReadings: res.data
       })
     })
+
     
   }
 
@@ -44,6 +47,7 @@ class DataTable extends Component{
       this.setState({
         bloodSugarReadings: res.data
       })
+    
     })).catch(err=>{
       console.log(`err ${err}`)
     })
@@ -73,6 +77,7 @@ render(){
         
           Dates:
           <select  value = {this.state.reading_date}onChange = {this.handleChange}>
+          <option selected="selected">Select Day:</option>
           {this.state.dates.map(date=>{
             return<option  value = {date.reading_date}>{format(new Date(date.reading_date),'MM/DD/YYYY')}</option>
 
@@ -93,11 +98,11 @@ render(){
 }
 
 const mapStateToProps = (reduxState)=>{
-  let {bloodSugarReadings, username} = reduxState
-  return {bloodSugarReadings, username}
+  let {bloodSugarReadings, reading_date, username} = reduxState
+  return {bloodSugarReadings, reading_date, username}
 }
 
 const mapDispatchToProps={
-  updateBloodSugar
+  updateBloodSugar,updateDay
 }
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(DataTable))

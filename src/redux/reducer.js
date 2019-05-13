@@ -4,7 +4,8 @@ const initialState ={
   firstName: '',
   lastName: '',
   email: '',
-  bloodSugarReadings: []
+  bloodSugarReadings: [],
+  reading_date: ''
 
 
 }
@@ -13,6 +14,7 @@ const initialState ={
  const UPDATE_USER_DETAILS = 'UPDATE_USER_DETAILS'
  const LOGOUT = 'LOGOUT'
  const UPDATE_BLOOD_SUGAR = 'UPDATE_BLOOD_SUGAR'
+ const UPDATE_DAY = 'UPDATE_DAY'
  export function updateUserId (id){
    return{
      type: UPDATE_USER_ID,
@@ -47,6 +49,13 @@ const initialState ={
   }
  }
 
+ export function updateDay(day){
+   return{
+     type:UPDATE_DAY,
+     payload: day
+   }
+ }
+
 export default function reducer(state = initialState, action){
 const { type, payload} = action
 switch(type){
@@ -62,6 +71,8 @@ switch(type){
   case UPDATE_BLOOD_SUGAR:
   console.log('REDUCER',payload)
   return {...state, bloodSugarReadings:payload}
+  case UPDATE_DAY:
+  return {...state, reading_date: payload}
   default: return state
 }
 
