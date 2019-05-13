@@ -135,6 +135,19 @@ module.exports={
       console.log(`error ${err}`)
     })
 
+  },
+  getLastDay: (req, res)=>{
+    const db = req.app.get('db')
+    let { user_id } = req.session.user
+    user_id = +user_id
+    db.getLastReading({user_id}).then((data)=>{
+      console.log(data)
+      res.status(200).send(data)
+    }).catch((err)=>{
+      console.log(`error ${err}`)
+      res.sendStatus(400)
+
+    })
   }
 
 }
