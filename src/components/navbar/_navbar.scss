@@ -26,8 +26,15 @@
 
 }
 
-button{
-
-  
+.register-login{
+  width: 10vw;
+  display: flex;
+  justify-content: space-between;
 }
 
+.user-logout{
+  width: 20vw;
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+}

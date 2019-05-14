@@ -30,16 +30,25 @@ class Navbar extends Component{
       <div>
       <Link to ="/home">Home</Link>
       </div>
+
       <div>
-      <Link to ='/register'>Register</Link>
-      </div>
-      <div>
-      <Link to ='/login'>Login</Link>
-      </div>
-      </div>
-      {username && <div>Welcome, {username}
+      {this.props.username?(<div className='user-logout'>Welcome, {username}
       <button onClick={logout}>Logout</button>
-      </div>}</div>
+      </div>):(
+        <div className='register-login'>
+        <div>
+        <Link to ='/register'>Register</Link>
+        </div>
+        <div>
+        <Link to ='/login'>Login</Link>
+        </div></div>
+      
+      )}
+
+      </div>
+      </div>
+      </div>
+ 
     </nav>
   )
 }

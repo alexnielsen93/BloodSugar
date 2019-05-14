@@ -46,9 +46,9 @@ handleRegisterFormSubmit=async(e)=>{
 }
 render(){
   return(
-    <>
+    <div className='register-form-box'>
     <h1>Register</h1>
-    <form onSubmit = {this.handleRegisterFormSubmit}>
+    <form className='register-form' onSubmit = {this.handleRegisterFormSubmit}>
     <input 
     name = 'registerUsername'
     placeholder = 'username'
@@ -92,7 +92,7 @@ render(){
 
     </form>
     {this.state.registerError && <h3>{this.state.errorMessage}</h3>}
-    </>
+    </div>
 
 
   )

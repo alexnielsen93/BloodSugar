@@ -1,0 +1,27 @@
+.register-form-box{
+  height: 100vh;
+  width: 100vw;
+  background-image: url(https://images.pexels.com/photos/915972/pexels-photo-915972.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.register-form{
+  
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  
+  input{
+    width: 20vw;
+  }
+  button{
+    width:10vw;
+  }
+}
