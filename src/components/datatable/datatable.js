@@ -7,6 +7,7 @@ import { updateBloodSugar, updateDay } from '../../redux/reducer'
 import { Link } from 'react-router-dom'
 import { encode } from 'punycode';
 import { format } from 'date-fns'
+import { async } from 'q';
 
 class DataTable extends Component{
   constructor(){
@@ -41,13 +42,13 @@ class DataTable extends Component{
     
   }
 
-  editReading = (reading)=>{
+  editReading =  async(reading)=>{
     let reading_date = encodeURIComponent(this.state.reading_date)
-    axios.post('/api/edit', reading).then(axios.get(`/api/bloodsugar/${reading_date}`).then(res=>{
-      this.setState({
+    await axios.put('/api/edit', reading).then(axios.get(`/api/bloodsugar/${reading_date}`).then(res=>{
+       this.setState({
         bloodSugarReadings: res.data
       })
-    
+       this.props.updateBloodSugar(this.state.bloodSugarReadings)
     })).catch(err=>{
       console.log(`err ${err}`)
     })

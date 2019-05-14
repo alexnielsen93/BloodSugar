@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { Line } from 'react-chartjs-2'
 import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
-import { format } from 'date-fns'
+import { format, isThisISOWeek } from 'date-fns'
 import axios from 'axios';
 import { updateDay } from '../../redux/reducer'
 import { async } from 'q';
@@ -17,7 +17,8 @@ class Graph extends Component {
       bloodSugarReadings: [],
       reading_date: '',
       arr: [],
-      dates: []
+      dates: [],
+      hasBeenLoaded: false
 
     }
   }
@@ -43,23 +44,31 @@ class Graph extends Component {
 //FIXTHIS
 async componentDidUpdate(prevProps, prevState){
 
-
-if(!this.state.reading_date && this.props.reading_date){
+console.log('first')
+if(!this.state.reading_date && this.props.reading_date && !this.state.hasBeenLoaded){
   await this.setState({
     
     reading_date: this.props.reading_date
   })
+  console.log('proving johnathan wrong')
+  console.log(this.state.bloodSugarReadings)
+  console.log(this.props.bloodSugarReadings)
+  
   await axios.get(`/api/bloodsugar/${this.state.reading_date}`).then(res => {
     this.setState({
       bloodSugarReadings: res.data,
-      
+      hasBeenLoaded: true
     })
 
       this.createTimeObjects()
-    
+      console.log(this.state.bloodSugarReadings)
+      console.log(this.props.bloodSugarReadings)
+
   })
 }
-if(this.state.reading_date !== this.props.reading_date){
+
+
+ if(this.state.reading_date !== this.props.reading_date && this.state.hasBeenLoaded){
   await this.setState({
     reading_date: this.props.reading_date
     
@@ -71,8 +80,23 @@ if(this.state.reading_date !== this.props.reading_date){
     })
   })
   this.createTimeObjects()
-  console.log(this.state.bloodSugarReadings, 'and ', this.state.arr)
+  
 }
+console.log('passing weird stuff')
+ if(this.props.bloodSugarReadings !== this.state.bloodSugarReadings && this.state.reading_date === this.props.reading_date && this.props.bloodSugarReadings.length >0){
+   console.log(' weird stuff is happening') 
+   console.log(this.state.bloodSugarReadings)
+      console.log(this.props.bloodSugarReadings)
+  await this.setState({
+      bloodSugarReadings: this.props.bloodSugarReadings,
+      
+    })
+
+
+  this.createTimeObjects()
+
+}
+console.log('last')
 }
   handleChange = async (e) => {
     console.log('handle change firing', e.target.value)

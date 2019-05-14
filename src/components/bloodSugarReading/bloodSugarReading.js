@@ -11,9 +11,7 @@ export default class BloodSugarReading extends Component{
 
   }
 
-  componentDidMount(){
-    console.log(this.props.reading)
-  }
+
   toggleEdit = ()=>{
     this.setState({
       edit: !this.state.edit

@@ -20,10 +20,11 @@ componentDidMount(){
     ...this.state, sugar_level,reading_date,reading_time,note,reading_id
   })
 }
-handleChange=(e)=>{
-  this.setState({
+ handleChange=async(e)=>{
+  await this.setState({
     [e.target.name]:e.target.value
   })
+  console.log(this.state)
 }
 
 
@@ -39,6 +40,8 @@ handleClick = ()=>{
   })
   return
   }
+
+  console.log(reading)
   this.props.editReading(reading)
 
   this.props.toggleEdit()

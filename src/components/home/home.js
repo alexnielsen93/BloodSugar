@@ -30,7 +30,7 @@ componentDidMount(){
 render(){
   return(
 
-  <div >
+  <div className='home-box' >
 <div>Your last Reading: {this.state.lastDay} at {this.state.lastTime}</div>
     <div className = "link-boxes">
     <Link to ='/add_data'>Enter Blood Sugar</Link>

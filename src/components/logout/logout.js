@@ -12,7 +12,7 @@ class Logout extends Component{
 
 
   function = ()=>{
-    axios.get('/auth/logout')
+    axios.delete('/auth/logout')
 
   }  
   render(){
