@@ -9,12 +9,13 @@ export default class Display extends Component{
     return(
       <div>
         <div className ='display-area'>
-        <div className = 'data-table-box'>
+        <h1 className="display-title">Your Daily BloodSugar Readings</h1>
+        <div className = 'graph-and-data'><div className = 'data-table-box'>
         <DataTable />
         </div>
         <div className = 'graph-box'>
         <Graph />
-        </div>
+        </div></div>
         </div>
       </div>
     )

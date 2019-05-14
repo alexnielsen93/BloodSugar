@@ -5,6 +5,9 @@ import {logout} from '../../redux/reducer'
 import {withRouter} from 'react-router-dom'
 class Navbar extends Component{
   componentDidMount(){
+    if(!this.props.username){
+      this.props.history.push('/landingpage')
+    }
     console.log(this.props)
   }
   componentDidUpdate(prevProps, prevData){

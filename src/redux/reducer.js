@@ -67,7 +67,7 @@ switch(type){
   const  { firstName,lastName, email, password, username} = payload
   return {...state, firstName, lastName, email, password,username}
   case LOGOUT:
-  return {...state, user_id: '', username: '', firstName: '', lastName: '', email: '', bloodSugarReadings: []}
+  return {...state, user_id: '', username: '', firstName: '', lastName: '', email: '', bloodSugarReadings: [], reading_date: ''}
   case UPDATE_BLOOD_SUGAR:
   console.log('REDUCER',payload)
   return {...state, bloodSugarReadings:payload}

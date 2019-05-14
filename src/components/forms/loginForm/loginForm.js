@@ -43,7 +43,7 @@ class LoginForm extends Component{
 
   render(){
     return(
-      <>
+      <div className = 'login-form'>
       <h1>Login</h1>
       <form onSubmit = {this.handleLoginFormSubmit}>
       <input
@@ -66,7 +66,7 @@ class LoginForm extends Component{
       
       </form>
       {this.state.loginError && <h3>{this.state.loginErrorMessage}</h3>}
-      </>
+      </div>
     )
   }
 }

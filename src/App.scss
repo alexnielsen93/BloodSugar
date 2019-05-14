@@ -4,7 +4,12 @@
 @import './components/display/display';
 @import './components/datatable/datatable';
 @import './components/graph/graph';
-
+@import './components/forms/addBloodSugarForm/addBloodSugarForm';
+@import './components/forms/loginForm/loginform';
+*{
+margin: 0;
+padding: 0;
+}
 .App {
   text-align: center;
 }

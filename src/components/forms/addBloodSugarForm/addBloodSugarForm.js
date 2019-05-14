@@ -11,7 +11,7 @@ class BloodSugarForm extends Component{
   constructor(){
     super()
     this.state={
-      sugar_level : 0,
+      sugar_level : '',
       reading_date: format(new Date(),'MM/DD/YYYY'),
       reading_time: format(new Date(),'hh:mm'),
       note: ''
@@ -40,7 +40,7 @@ class BloodSugarForm extends Component{
       console.log(err)
     }
     this.setState({
-      sugar_level : 0,
+      sugar_level : '',
       reading_date: format(new Date(),'MM/DD/YYYY'),
       reading_time: format(new Date(),'h:m'),
       note: ''
@@ -51,7 +51,7 @@ class BloodSugarForm extends Component{
   render(){
     return(
     
-    <>
+    <div className= "blood-sugar-form">
     <h1>Add Blood Sugar</h1>
     <form onSubmit = {this.handleDataFormSubmit}>
     <input name = "sugar_level"
@@ -81,7 +81,10 @@ class BloodSugarForm extends Component{
     <button onClick={this.handleFormDataSubmit}>Submit</button>
     <button onClick={()=>{this.props.history.push('/home')}}>Cancel</button>
     </form>
-    </>
+    <div className = 'video-box'>
+    <iframe width="665" height="374" src="https://www.youtube.com/embed/qAZAWBJfCqs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    </div>
     )
   }
 }

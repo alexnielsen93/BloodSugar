@@ -99,7 +99,17 @@ if(this.state.reading_date !== this.props.reading_date){
 
     this.setState({
       arr: this.state.bloodSugarReadings.map(reading => {
-        let obj = { x: moment(`${reading.reading_time}`, 'HH:mm').utc().toDate(), y: reading.sugar_level }
+        let color = "white"
+        if(reading.sugar_level < 90){
+          color = "blue"
+        }
+        if(reading.sugar_level >=90 && reading.sugar_level<=150){
+          color = "green"
+        }
+        if(reading.sugar_level >150){
+          color = "red"
+        }
+        let obj = { x: moment(`${reading.reading_time}`, 'HH:mm').utc().toDate(), y: reading.sugar_level, backgroundColor: color, borderColor: color }
         return obj
       })
     })
@@ -128,7 +138,6 @@ if(this.state.reading_date !== this.props.reading_date){
 
         </div> */}
 
-        <h2>Date: {format(new Date(this.state.reading_date),'MM/DD/YYYY')}</h2>
        
         <div className = 'line-graph-box'>
           <Line
