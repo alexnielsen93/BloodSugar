@@ -41,24 +41,37 @@ class Graph extends Component {
 }
 
 //FIXTHIS
-componentDidUpdate(prevProps, prevState){
+async componentDidUpdate(prevProps, prevState){
 
-console.log(`PROPS: ${this.props.reading_date} and ${prevProps.reading_date}
-STATE:  ${this.state.reading_date} and ${prevState.reading_date}`)
+
 if(!this.state.reading_date && this.props.reading_date){
-  this.setState({
+  await this.setState({
     
     reading_date: this.props.reading_date
   })
-  this.createTimeObjects()
+  await axios.get(`/api/bloodsugar/${this.state.reading_date}`).then(res => {
+    this.setState({
+      bloodSugarReadings: res.data,
+      
+    })
+
+      this.createTimeObjects()
+    
+  })
 }
 if(this.state.reading_date !== this.props.reading_date){
-  this.setState({
+  await this.setState({
     reading_date: this.props.reading_date
     
   })
-  
+  await axios.get(`/api/bloodsugar/${this.state.reading_date}`).then(res => {
+    this.setState({
+      bloodSugarReadings: res.data,
+      
+    })
+  })
   this.createTimeObjects()
+  console.log(this.state.bloodSugarReadings, 'and ', this.state.arr)
 }
 }
   handleChange = async (e) => {
@@ -114,6 +127,9 @@ if(this.state.reading_date !== this.props.reading_date){
           </select>
 
         </div> */}
+
+        <h2>Date: {format(new Date(this.state.reading_date),'MM/DD/YYYY')}</h2>
+       
         <div className = 'line-graph-box'>
           <Line
         data={
@@ -163,9 +179,7 @@ if(this.state.reading_date !== this.props.reading_date){
         }]
         }
         }} /></div>
-        graph
-        <button onClick={() => { this.createTimeObjects() }}>button</button>
-        <button onClick={()=>{console.log(this.state)}}>consolelog</button>
+
       </div>
     )
   }
