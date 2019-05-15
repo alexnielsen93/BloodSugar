@@ -27,6 +27,13 @@ componentDidMount(){
     console.log(this.state)
       })
 }
+
+sendMessage=()=>{
+
+  axios.get('/api/message').then(()=>{
+    console.log('its working')
+  })
+}
 render(){
   return(
 
@@ -38,6 +45,7 @@ render(){
     <Link to = '/graph'>Graph</Link>
     <Link to ='/display'>Display</Link>
     </div>
+    <button onClick ={this.sendMessage}>Send Message</button>
   
   <div className = 'hero-box'>
   

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import {updateUsername} from '../../../redux/reducer'
+import { Link } from 'react-router-dom'
 
 class Settings extends Component{
 constructor(){
@@ -108,6 +109,7 @@ render(){
     <button>Submit Changes</button>
     </form>
     <button onClick={()=>{this.props.history.push('/home')}}>Cancel</button>
+    <Link to= '/time'>Set Up Message Times</Link>
     </main>
   )
 }

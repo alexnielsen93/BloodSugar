@@ -10,6 +10,7 @@ import DataTable from './components/datatable/datatable'
 import Graph from './components/graph/graph'
 import Display from './components/display/display'
 import Settings from './components/forms/settings/settings'
+import TimeForm from './components/forms/timeForm/timeForm'
 export default(
 
   <Switch>
@@ -28,6 +29,7 @@ export default(
     <Route path = '/landingpage' component = {LandingPage}/>
     <Route path = '/display' component = {Display}/>
     <Route path = '/settings' component = {Settings}/>
+    <Route path = '/time' component = {TimeForm}/>
 
   </Switch>
 )
