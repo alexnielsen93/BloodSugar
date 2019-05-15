@@ -128,7 +128,9 @@ module.exports={
     let {reading_id, note, sugar_level, reading_date, reading_time} = req.body
     reading_id = +reading_id
     sugar_level = +sugar_level
-    console.log(reading_id)
+    console.log(reading_id, sugar_level)
+    
+
     db.editReading({reading_id, note, sugar_level, reading_date, reading_time}).then(()=>{
       res.sendStatus(200)
     }).catch(err=>{

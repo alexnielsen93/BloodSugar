@@ -56,7 +56,7 @@ handleClick = ()=>{
           placeholder="blood sugar level"
           value={this.state.sugar_level}
           onChange={this.handleChange}
-          type="text" />
+          type="number" />
         <input
           name="reading_date"
           placeholder="date: MM/DD/YYYY"

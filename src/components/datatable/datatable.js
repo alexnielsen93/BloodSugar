@@ -43,16 +43,20 @@ class DataTable extends Component{
   }
 
   editReading =  async(reading)=>{
+    console.log(reading.reading_date, 'and  --', reading.sugar_level)
     let reading_date = encodeURIComponent(this.state.reading_date)
-    await axios.put('/api/edit', reading).then(axios.get(`/api/bloodsugar/${reading_date}`).then(res=>{
-       this.setState({
-        bloodSugarReadings: res.data
+    await axios.put('/api/edit', reading)
+      await axios.get(`/api/bloodsugar/${reading_date}`).then(res=>{
+
+
+        this.setState({
+         bloodSugarReadings: res.data
+       })
       })
        this.props.updateBloodSugar(this.state.bloodSugarReadings)
-    })).catch(err=>{
-      console.log(`err ${err}`)
-    })
-  }
+    }
+    
+  
   deleteReading = (reading_id)=>{
     console.log(reading_id)
     axios.post('/api/delete', {reading_id}).then(res=>{
