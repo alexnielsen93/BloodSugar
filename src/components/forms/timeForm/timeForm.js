@@ -11,6 +11,7 @@ class TimeForm extends Component{
       username : '',
       times : [],
       time:  '',
+      timeObjArr: []
     }
   }
 
@@ -22,16 +23,26 @@ class TimeForm extends Component{
   }
 
   addTime =()=>{
-    let { times } = this.state
-    times.push(this.state.time)
+    console.log(this.state)
+    let { time ,times, timeObjArr } = this.state
+    let splitTime = time.split(':')
+    
+    timeObjArr.push({hour: splitTime[0], minute: splitTime[1]})
+    
+
+    times.push(time)
     this.setState({
       times,
-      time: ''
+      time: '',
+      timeObjArr
     })
   }
 
   submitTimes=()=>{
-
+    const { timeObjArr } = this.state
+    axios.post('/api/schedule', { timeObjArr }).then(
+      this.props.history.push('/settings')
+    )
   }
   render(){
 

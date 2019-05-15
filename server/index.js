@@ -4,27 +4,46 @@ const app = express()
 const massive = require('massive')
 const session = require('express-session')
 const controller = require('./controller')
-const CronJob = require('cron').CronJob
+var cron= require('node-cron')
 app.use(express.json())
 
 const { SESSION_SECRET, SERVER_PORT, CONNECTION_STRING, TWILIO_PHONE_NUMBER, ACCOUNT_SID, AUTH_TOKEN, MY_PHONE_NUMBER } = process.env
 const client = require('twilio')(ACCOUNT_SID, AUTH_TOKEN)
 
 
-app.get('/api/message',  (req, res) => {
 
-  client.messages.create({
-    body: 'sup?',
-    from: TWILIO_PHONE_NUMBER,
-    to: MY_PHONE_NUMBER
-  }).then(() => { console.log('message sent') })
-  res.sendStatus(200)
 
-})
 
-new CronJob('*/5 * * * * * ',()=>{
-  console.log('once every 5 seconds')
-}, null, true, 'America/Los_Angeles')
+
+
+app.post('/api/schedule', (req,res)=>{
+  console.log('request recieved')
+  let { timeObjArr } = req.body
+  timeObjArr.map(time=>{
+    const { hour, minute } = time
+    console.log(`time scheduled for ${hour}:${minute}`)
+    
+    cron.schedule(`${minute} ${hour} * * *`, ()=>{
+      
+      
+      client.messages.create({
+        body: `It's ${hour}:${minute}!  Time to test your bloodsugar!`,
+        from: TWILIO_PHONE_NUMBER,
+        to: MY_PHONE_NUMBER
+      }).then(() => { console.log('message sent') })
+      res.sendStatus(200)
+      console.log(`it is ${hour}:${minute}!`)
+    },
+    {
+      scheduled: true,
+     
+    }
+    )}
+)
+
+res.sendStatus(200)}
+
+)
 
 app.use(session({
 
