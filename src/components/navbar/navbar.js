@@ -32,8 +32,13 @@ class Navbar extends Component{
       </div>
 
       <div>
-      {this.props.username?(<div className='user-logout'>Welcome, {username}
+      {this.props.username?(<div className = 'settings-logout'>
+      <div>
+        <Link to ='/settings'>Settings</Link>
+      </div>
+        <div className='user-logout'>Welcome, {username}
       <button onClick={logout}>Logout</button>
+      </div>
       </div>):(
         <div className='register-login'>
         <div>

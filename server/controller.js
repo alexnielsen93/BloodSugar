@@ -150,6 +150,45 @@ module.exports={
       res.sendStatus(400)
 
     })
+  },
+  getUserInfo: (req,res)=>{
+    const db = req.app.get('db')
+    let {user_id} = req.session.user
+    user_id = +user_id
+    db.getUserInfo({user_id}).then(data=>{
+      res.status(200).send(data)
+    }).catch(err=>{
+      console.log(`error ${err}`)
+      res.sendStatus(400)
+    })
+  },
+  editUserInfo: async (req,res)=>{
+    const db = req.app.get('db')
+    let email =req.body.old_email
+    let {user_id} = req.session.user 
+    const { username, first_name, last_name, new_email, old_email, phone_number, newPassword} = req.body
+    user_id = +user_id
+    console.log(old_email, 'and   ', new_email)
+    if(new_email !== old_email){
+      console.log('database query')
+    let newEmailTaken = await(db.checkEmail({new_email}))
+    newEmailTaken = +newEmailTaken[0].count
+    if (newEmailTaken!==0){
+      return res.sendStatus(409)
+    }
+     email = new_email
+  }
+    const salt = bcrypt.genSaltSync(10)
+    const hash = bcrypt.hashSync(newPassword, salt)
+    db.editUserInfo({user_id, username, first_name, last_name, email, phone_number, hash}).then(data=>{
+
+      res.status(200).send(data)
+    }).catch(err=>{
+      console.log(`err${err}`)
+      res.sendStatus(400)
+    })
+
+    
   }
 
 }

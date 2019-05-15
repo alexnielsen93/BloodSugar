@@ -1,11 +1,12 @@
 const initialState ={
   user_id: null,
   username: '',
-  firstName: '',
-  lastName: '',
+  first_name: '',
+  last_name: '',
   email: '',
   bloodSugarReadings: [],
-  reading_date: ''
+  reading_date: '',
+  phone_number: ''
 
 
 }
@@ -64,10 +65,10 @@ switch(type){
   case UPDATE_USERNAME:
   return {...state, username:payload}
   case UPDATE_USER_DETAILS:
-  const  { firstName,lastName, email, password, username} = payload
-  return {...state, firstName, lastName, email, password,username}
+  const  { first_name,last_name, email, password, username} = payload
+  return {...state, first_name, last_name, email, password,username}
   case LOGOUT:
-  return {...state, user_id: '', username: '', firstName: '', lastName: '', email: '', bloodSugarReadings: [], reading_date: ''}
+  return {...state, user_id: '', username: '', first_name: '', last_name: '', email: '', bloodSugarReadings: [], reading_date: ''}
   case UPDATE_BLOOD_SUGAR:
   console.log('REDUCER',payload)
   return {...state, bloodSugarReadings:payload}

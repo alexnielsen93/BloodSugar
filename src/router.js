@@ -9,6 +9,7 @@ import AddBloodSugarForm from './components/forms/addBloodSugarForm/addBloodSuga
 import DataTable from './components/datatable/datatable'
 import Graph from './components/graph/graph'
 import Display from './components/display/display'
+import Settings from './components/forms/settings/settings'
 export default(
 
   <Switch>
@@ -26,6 +27,7 @@ export default(
     <Route path = '/graph' component = {Graph}/>
     <Route path = '/landingpage' component = {LandingPage}/>
     <Route path = '/display' component = {Display}/>
+    <Route path = '/settings' component = {Settings}/>
 
   </Switch>
 )
