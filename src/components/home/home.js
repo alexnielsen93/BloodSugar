@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
 import { format } from 'date-fns'
+import TheSlider from '../slider/slider'
 
 
 class Home extends Component{
@@ -48,8 +49,7 @@ render(){
     <button onClick ={this.sendMessage}>Send Message</button>
   
   <div className = 'hero-box'>
-  
-  
+  <TheSlider/>
   </div>
   </div>
   )}
