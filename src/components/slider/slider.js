@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
- 
+
 export default class TheSlider extends React.Component {
   render() {
     var settings = {
@@ -11,25 +11,28 @@ export default class TheSlider extends React.Component {
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 6000,
-      
+
     };
     return (
       <Slider {...settings}>
 
-          <div className= 'img-1'><h1>
-            Prepare
-          </h1></div>
-    
+        <div className='img-1'><div><h1>
+          Prepare
+          </h1></div></div>
 
-          <div className = 'img-2'><h1>
-            Measure
-          </h1></div>
-    
-    
-          <div className = 'img-3'>
-            <h1>Achieve</h1>
-          </div>
-        
+
+        <div className='img-2'>
+          <div>
+            <h1>
+              Assess
+          </h1>
+          </div></div>
+
+
+        <div className='img-3'>
+          <h1>Achieve</h1>
+        </div>
+
       </Slider>
     );
   }

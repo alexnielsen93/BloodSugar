@@ -40,14 +40,7 @@ render(){
 
   <div className='home-box' >
 <div>Your last Reading: {this.state.lastDay} at {this.state.lastTime}</div>
-    <div className = "link-boxes">
-    <Link to ='/add_data'>Enter Blood Sugar</Link>
-    <Link to ='/data'>Data</Link>
-    <Link to = '/graph'>Graph</Link>
-    <Link to ='/display'>Display</Link>
-    </div>
-    <button onClick ={this.sendMessage}>Send Message</button>
-  
+
   <div className = 'hero-box'>
   <TheSlider/>
   </div>
