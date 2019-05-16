@@ -83,8 +83,7 @@ module.exports={
     user_id = +user_id
     let {sugar_level, reading_date, reading_time, note} = req.body
     sugar_level = +sugar_level
-    console.log(typeof sugar_level)
-    console.log(user_id)
+    
     try{
       console.log(sugar_level, reading_date,reading_time,note,user_id)
       db.addReading({sugar_level, reading_date,reading_time,note,user_id}).then((data)=>{
@@ -189,6 +188,8 @@ module.exports={
     })
 
     
-  }
+  },
+
+  
 
 }
