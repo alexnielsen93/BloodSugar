@@ -55,3 +55,8 @@ render(){
   )}
 }
 export default Home
+
+// https://cdn.stocksnap.io/img-thumbs/960w/KSVNE2NWQP.jpg PLAN/PREPARE
+
+//MEASURE/ASSESS https://burst.shopifycdn.com/photos/wrtiting-tools.jpg?width=1850&amp;format=pjpg&amp;exif=0&amp;iptc=0
+//IMPROVE/ACHIEVE https://burst.shopifycdn.com/photos/running-cloudy-day.jpg?width=1850&format=pjpg&exif=1&iptc=1
