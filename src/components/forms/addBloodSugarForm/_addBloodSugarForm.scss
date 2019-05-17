@@ -8,6 +8,12 @@ display: flex;
 flex-direction: row-reverse;
 align-items: center;
 justify-content: center;
+background-blend-mode: overlay;
+background-color: rgba(0, 0, 0, 0.199);
+h1{
+  text-shadow: 2px 2px 2px black;
+  color: white;
+}
 }
 .form-box{
   display: flex;
@@ -24,6 +30,15 @@ justify-content: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width:100%;
+  max-width:20vw;
+
+  input{
+    width: 20vw;
+    margin: 5px;
+  }
+  
+}
+
+.note-input{
   
 }

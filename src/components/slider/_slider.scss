@@ -4,8 +4,9 @@ $hero-font : 'Fjalla One', sans-serif;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  height: 100vh;
+  height: 96.7vh;
   width: 100vw;
+  margin: 0 10px;
 }
 
 @mixin hero-text{
@@ -40,8 +41,8 @@ background-color: rgba(92, 54, 15, 0.274);
   align-items: center;
   text-align: center;
   background-image: url("https://burst.shopifycdn.com/photos/wrtiting-tools.jpg?width=18100&amp;format=pjpg&amp;exif=0&amp;iptc=0");
+  line-height: 90vh;
   background-blend-mode: overlay;
-  line-height: 80vh;
 
 background-color: rgba(0, 0, 0, 0.199);
   
@@ -53,13 +54,18 @@ background-color: rgba(0, 0, 0, 0.199);
 .img-3{
   @include hero-image();
   background-image: url("https://burst.shopifycdn.com/photos/running-cloudy-day.jpg?width=18100&format=pjpg&exif=1&iptc=1");
-  line-height: 40vh;
+  line-height: 47vh;
   text-align: right;  
   background-blend-mode: overlay;
 background-color: rgba(0, 0, 0, 0.199);
   h1{
    @include hero-text();
+   margin-right: .1em;
+   
     // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }  
 }
 
+.slider-parent{
+  margin: 0 -10px;
+}

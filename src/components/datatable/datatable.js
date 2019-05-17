@@ -4,10 +4,7 @@ import axios from 'axios'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { updateBloodSugar, updateDay } from '../../redux/reducer'
-import { Link } from 'react-router-dom'
-import { encode } from 'punycode';
 import { format } from 'date-fns'
-import { async } from 'q';
 
 class DataTable extends Component{
   constructor(){
@@ -78,7 +75,7 @@ render(){
   return(
     <div className= "data-table-area">
       <div>
-        <Link to = 'graph'>Graphs</Link>
+        
         
           Dates:
           <select  value = {this.state.reading_date}onChange = {this.handleChange}>

@@ -71,15 +71,17 @@ class BloodSugarForm extends Component{
     value = {this.state.reading_time}
     onChange = {this.handleFormInputUpdate}
     type="text"/>
-    <input
+    <input className="note-input"
     name = "note"
     placeholder = "note"
     value = {this.state.note}
     onChange = {this.handleFormInputUpdate}
-    type="text"/></div>
-    
+    type="text"
+    contentEditable="true"
+    /></div>
+    <div className = 'button-box'>
     <button onClick={this.handleFormDataSubmit}>Submit</button>
-    <button onClick={()=>{this.props.history.push('/home')}}>Cancel</button>
+    <button onClick={()=>{this.props.history.push('/home')}}>Cancel</button></div>
     </form></div>
     <div className = 'video-box'>
     <iframe width="300" height="300" src="https://www.youtube.com/embed/qAZAWBJfCqs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>

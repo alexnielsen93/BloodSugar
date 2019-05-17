@@ -9,5 +9,35 @@
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.199);
+  
+  
+}
 
+.msg-and-input{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-blend-mode: overlay;
+  background-color: rgba(0, 0, 0, 0.637);
+  color: white;
+  h1{
+    margin:5px;
+  }
+  h3{
+    margin: 5px;
+  }
+  input{
+    margin: 5px;
+  }
+  h4{margin:5px;}
+}
+
+.button-box{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 }

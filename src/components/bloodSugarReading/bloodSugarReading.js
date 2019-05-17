@@ -27,13 +27,13 @@ render(){
   let {reading} = this.props
   return(
     this.state.edit ? <EditReadingForm reading = {reading} toggleEdit = {this.toggleEdit} editReading = {this.props.editReading}/> : 
-    <div>
+    <div className = 'reading-main'>
       <div>------------------------------</div>
       <p>Blood Sugar: {reading.sugar_level}</p>
       <p>Date: {format(reading.reading_date,'MM/DD/YYYY')}</p>
       <p>Time: {format(new Date(`2019-05-08T${reading.reading_time}`), 'HH:mm')}</p>
       <p>Note: {reading.note}</p>
-      <div>
+      <div className = 'button-box'>
         <button onClick = {()=>{this.toggleEdit()}}>Edit</button>
         <button onClick={()=>{this.props.deleteReading(reading.reading_id)}}>Delete</button>
       </div>

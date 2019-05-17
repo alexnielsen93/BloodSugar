@@ -49,22 +49,23 @@ class TimeForm extends Component{
     return(
       <main className = 'time-form-main'>
 
-      <h1>Time Form</h1>
-      {(this.state.times.length ===0) ? <div>No Times Scheduled</div>:
-    
+      <div className = 'msg-and-input'><h1>Personal Text Schedule</h1>
+      <h3>Use 24hr time ie 5:30PM = 17:30</h3>
+      {(this.state.times.length ===0) ? <h4>No Times Scheduled</h4>:
+      
       this.state.times.map(time=>{
-        return <div>{time}</div>
-  })}
+      return <div>{time}</div>
+      })}
       <input
-    name = "time"
-    placeholder = "time: hour:minute"
-    value = {this.state.time}
-    onChange = {this.handleFormInputUpdate}
-    type="text"/>
-
-      <button onClick={this.addTime}>Add Time To Schedule</button>
+      name = "time"
+      placeholder = "time: hour:minute"
+      value = {this.state.time}
+      onChange = {this.handleFormInputUpdate}
+      type="text"/>
+      
+      <div className = 'button-box'><button onClick={this.addTime}>Add Time</button>
       <button onClick={this.submitTimes}>Submit Schedule</button>
-      <button onClick={()=>{this.props.history.push('/settings')}}>Cancel</button>
+      <button onClick={()=>{this.props.history.push('/settings')}}>Cancel</button></div></div>
       </main>
     )
   }

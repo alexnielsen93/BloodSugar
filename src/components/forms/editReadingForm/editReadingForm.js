@@ -49,9 +49,9 @@ handleClick = ()=>{
   render() {
     
     return (
-      <div>
+      <div className = 'edit-reading-main'>
         <div>------------------------------</div>
-        Edit Form
+        Edit Reading
         <input name="sugar_level"
           placeholder="blood sugar level"
           value={this.state.sugar_level}
@@ -76,8 +76,8 @@ handleClick = ()=>{
           onChange={this.handleChange}
           type="text" />
 
-        <button onClick={() => { this.props.toggleEdit() }}>Cancel</button>
-        <button onClick={()=>{this.handleClick()}}>Submit</button>
+        <div className = 'button-box'><button onClick={() => { this.props.toggleEdit() }}>Cancel</button>
+        <button onClick={()=>{this.handleClick()}}>Submit</button></div>
         <div>------------------------------</div>
       </div>
     )

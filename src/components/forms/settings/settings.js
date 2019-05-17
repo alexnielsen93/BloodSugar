@@ -67,7 +67,7 @@ render(){
   return(
     <main className = 'settings-main'>
       Settings
-    <form onSubmit={this.handleEditFormSubmit}>
+    <form className = "form-input" onSubmit={this.handleEditFormSubmit}>
       <input 
       name = 'username'
       placeholder = 'username'

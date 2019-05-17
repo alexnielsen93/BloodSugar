@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import { logout } from '../../redux/reducer'
 import { withRouter } from 'react-router-dom'
+import Logo from '../../logo.png'
 class Navbar extends Component {
   componentDidMount() {
     if (!this.props.username) {
@@ -23,7 +24,7 @@ class Navbar extends Component {
 
         <div className='navbar'>
           <div className='logo'>
-            <h1>Glucose Tracker</h1>
+            <img className = 'logo' src={Logo} alt=""/>
           </div>
           <div className='navlist'>
 

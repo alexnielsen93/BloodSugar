@@ -16,7 +16,7 @@ export default class TheSlider extends React.Component {
 
     };
     return (
-      <Slider {...settings}>
+      <Slider {...settings} className= "slider-parent">
 
         <div className='img-1'><div><h1>
           Plan
@@ -44,3 +44,6 @@ export default class TheSlider extends React.Component {
 
 //MEASURE/ASSESS https://burst.shopifycdn.com/photos/wrtiting-tools.jpg?width=1850&amp;format=pjpg&amp;exif=0&amp;iptc=0
 //IMPROVE/ACHIEVE https://burst.shopifycdn.com/photos/running-cloudy-day.jpg?width=1850&format=pjpg&exif=1&iptc=1
+
+//glucograffer, sugartracker, I'mdiabeticandIneedaglucosetracker
+
