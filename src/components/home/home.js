@@ -39,7 +39,8 @@ render(){
   return(
 
   <div className='home-box' >
-<div>Your last Reading: {this.state.lastDay} at {this.state.lastTime}</div>
+<div className = 'reading-box'>Your last Reading: {this.state.lastDay} at {this.state.lastTime}
+<Link to ='/add_data'>Add Reading</Link></div>
 
   <div className = 'hero-box'>
   <TheSlider/>

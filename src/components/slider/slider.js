@@ -4,27 +4,29 @@ import Slider from "react-slick";
 export default class TheSlider extends React.Component {
   render() {
     var settings = {
-      dots: true,
+      arrows: false,
+      dots: false,
       infinite: true,
       speed: 1500,
       slidesToShow: 1,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 6000,
+      
 
     };
     return (
       <Slider {...settings}>
 
         <div className='img-1'><div><h1>
-          Prepare
+          Plan
           </h1></div></div>
 
 
         <div className='img-2'>
           <div>
             <h1>
-              Assess
+              Measure
           </h1>
           </div></div>
 

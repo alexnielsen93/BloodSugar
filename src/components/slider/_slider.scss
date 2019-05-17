@@ -1,10 +1,25 @@
+$hero-font : 'Fjalla One', sans-serif;
+
+@mixin hero-image{
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
+  width: 100vw;
+}
+
+@mixin hero-text{
+  font-family: $hero-font;
+  vertical-align: middle;
+  font-size: 1000%;
+  letter-spacing: .1em;
+  color: white;
+}
+
+
 .img-1{
+@include hero-image();
 background-image: url("https://cdn.stocksnap.io/img-thumbs/960w/KSVNE2NWQP.jpg");
-background-size: cover;
-background-repeat: no-repeat;
-background-position: center;
-height: 100vh;
-width: 100vw;
 line-height: 140vh;
 text-align: left;
 background-blend-mode: overlay;
@@ -13,52 +28,37 @@ background-color: rgba(92, 54, 15, 0.274);
 
   
   h1{
-    vertical-align: middle;
-    font-size: 1000%;
-    letter-spacing: .1em;
-    color: white;
+    @include hero-text();
     // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }  
 }
 
 .img-2{
+  @include hero-image();
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
   background-image: url("https://burst.shopifycdn.com/photos/wrtiting-tools.jpg?width=18100&amp;format=pjpg&amp;exif=0&amp;iptc=0");
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 100vh;
-  width: 100vw;
-  line-height: 80vh;
   background-blend-mode: overlay;
+  line-height: 80vh;
+
 background-color: rgba(0, 0, 0, 0.199);
   
   h1{
-    vertical-align: middle;
-    font-size: 1000%;
-    letter-spacing: .1em;
-    color: white;
+    @include hero-text();
     // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }  
 }
 .img-3{
+  @include hero-image();
   background-image: url("https://burst.shopifycdn.com/photos/running-cloudy-day.jpg?width=18100&format=pjpg&exif=1&iptc=1");
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
-  width: 100vw;
   line-height: 40vh;
   text-align: right;  
   background-blend-mode: overlay;
 background-color: rgba(0, 0, 0, 0.199);
   h1{
-    vertical-align: middle;
-    font-size: 1000%;
-    letter-spacing: .1em;
-    color: white;
+   @include hero-text();
     // text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
   }  
 }
