@@ -20,12 +20,10 @@ componentDidMount(){
     
     let formatDay = format(reading_date,'MM/DD/YYYY')
     let formatTime = format(new Date(`2019-05-08T${reading_time}`), 'HH:mm')
-    console.log(`${formatDay} , ${formatTime}`)
     this.setState ({
       lastDay : formatDay,
       lastTime: formatTime
     })
-    console.log(this.state)
       })
 }
 

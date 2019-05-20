@@ -24,7 +24,9 @@ background-image: url("https://cdn.stocksnap.io/img-thumbs/960w/KSVNE2NWQP.jpg")
 line-height: 140vh;
 text-align: left;
 background-blend-mode: overlay;
-background-color: rgba(92, 54, 15, 0.274);
+background-color: rgba(0, 0, 0, 0.199);
+
+// background-color: rgba(92, 54, 15, 0.274);
 // background-color: rgba(0, 0, 0, 0.199);
 
   
@@ -45,6 +47,7 @@ background-color: rgba(92, 54, 15, 0.274);
   background-blend-mode: overlay;
 
 background-color: rgba(0, 0, 0, 0.199);
+// background-color: rgba(92, 54, 15, 0.274);
   
   h1{
     @include hero-text();
@@ -58,6 +61,7 @@ background-color: rgba(0, 0, 0, 0.199);
   text-align: right;  
   background-blend-mode: overlay;
 background-color: rgba(0, 0, 0, 0.199);
+// background-color: rgba(92, 54, 15, 0.274);
   h1{
    @include hero-text();
    margin-right: .1em;
