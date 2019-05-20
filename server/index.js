@@ -26,7 +26,7 @@ app.use(session({
 }))
 
 app.use(bodyParser.urlencoded({extended: false}))
-
+app.use( express.static( `${__dirname}/../build` ) );
 
 
 app.post('/api/sms',async (req, res)=>{
