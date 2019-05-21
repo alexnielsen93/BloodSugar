@@ -33,7 +33,7 @@ handleRegisterFormSubmit=async(e)=>{
     axios.post('/auth/login', {username, password})
     this.props.updateUsername(registerUsername)
     this.props.updateUserId(res.data.user_id)
-    this.props.history.push('/info')
+    this.props.history.push('/home')
     console.log('register successful')
 
   }
