@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
-import { logout } from '../../redux/reducer'
+import { logout, updateUserDetails } from '../../redux/reducer'
 import { withRouter } from 'react-router-dom'
 import Logo from '../../logo.png'
+import axios from 'axios'
 class Navbar extends Component {
-  componentDidMount() {
+  async componentDidMount() {
+    const res = await axios.get('/api/user')
+    const {first_name, last_name, email, username, password} = res.data
     if (!this.props.username) {
       this.props.history.push('/landingpage')
+      
     }
-    console.log(this.props)
+    else {
+      this.props.updateUserDetails({first_name, last_name, email, username, password})
+    }
   }
   componentDidUpdate(prevProps, prevData) {
     if (prevProps.username !== this.props.username && this.props.username === '') {
@@ -41,16 +47,16 @@ class Navbar extends Component {
                 <div>
                   <Link to='/settings'>Settings</Link>
                 </div>
-                <div className='user-logout'>
-                  <button onClick={logout}>Logout</button>
+                <div className='user-logout '>
+                  <button className= 'blue-button' onClick={logout}>Logout</button>
                 </div>
               </div>) : (
                   <div className='register-login'>
                     <div>
-                      <Link to='/register'>Register</Link>
+                      <Link to='/register'><button className = 'blue-button'>Register</button></Link>
                     </div>
-                    <div>
-                      <Link to='/login'>Login</Link>
+                    <div >
+                      <Link to='/login'><button className = 'blue-button'>Login</button></Link>
                     </div></div>
 
                 )}

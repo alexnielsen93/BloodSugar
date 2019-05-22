@@ -62,7 +62,7 @@ class LoginForm extends Component{
       type = 'text'
 
       />
-      <button>Login</button>
+      <button className = 'blue-button'>Login</button>
       
       </form>
       {this.state.loginError && <h3>{this.state.loginErrorMessage}</h3>}

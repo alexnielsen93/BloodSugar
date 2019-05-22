@@ -1,3 +1,6 @@
+@import '../../variables';
+
+
 .navbar{
   display: flex;
   flex-direction: row;
@@ -30,7 +33,7 @@
 }
 
 .register-login{
-  width: 10vw;
+  width: 20vw;
   display: flex;
   justify-content: space-between;
 }
@@ -57,4 +60,8 @@
 .logo{
   width: 15vw;
   margin-left: 1em;
+}
+
+.blue-button{
+  @include blue-button()
 }
